@@ -2,12 +2,14 @@ from types import ListType
 
 __all__ = ['str2arr', 'arr2str']
 
-caps = { '(': ')', '{': '}', '[': ']' }
+caps = {'(': ')', '{': '}', '[': ']'}
+
 
 def _str2num(str):
     a = str.strip().split(';')
     a = map(float, str.split(';'))
     return a
+
 
 def _str2arr(cap, str):
     if str[0] in caps.keys():
@@ -25,14 +27,16 @@ def _str2arr(cap, str):
         pos = str.find(caps[cap])
         nums = _str2num(str[:pos])
         str = str[(pos + 1):]
-        
+
         return (str, nums)
 
+
 def str2arr(str):
-   
+
     (str, arr) = _str2arr(str[0], str[1:])
- 
+
     return arr
+
 
 def _arr2str(arr):
     ret = ''
@@ -44,7 +48,8 @@ def _arr2str(arr):
     else:
         ret = '(' + ';'.join(map(str, arr)) + ')'
     return ret
-        
+
+
 def arr2str(arr):
     ret = '('
     for elem in arr:
