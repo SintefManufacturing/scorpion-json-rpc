@@ -4,13 +4,9 @@
 #--------------------------------------------------------------------
 __author__ = "Sebastian Dransfeld"
 __copyright__ = "Sintef Raufoss Manufacturing 2015"
-__credits__ = ["Mats Larsen"]
+__credits__ = ["Mats Larsen", "Olivier Roulet-Dubonnet", "Alvaro Capelan"]
 __license__ = "Sintef Raufoss Manufacturing 2015"
-__maintainer__ = "Mats Larsen"
-__email__ = "Mats.Larsen@sintef.com"
 __status__ = "Development"
-__projectNR__ = "MultiMat"
-__date__ = "20042015"
 #--------------------------------------------------------------------
 #Hardware Details
 #--------------------------------------------------------------------
@@ -40,7 +36,6 @@ reload(client)
 import __main__
 from time import time
 import os
-import xml.etree.ElementTree as et
 
 from System.Reflection import Assembly
 scorpionDir = __main__.GetValue('System.ScorpionDir')
@@ -48,19 +43,15 @@ Assembly.LoadFrom(scorpionDir + r'\OverlayPanel.dll')
 Assembly.LoadFrom(scorpionDir + r'\RawTcpMessenger.dll')
 from Tordivel import RawTcpMessenger, OverlayPanel
 import traceback
+
 # Load custom assemblies
 from System.Text import Encoding
+
 #--------------------------------------------------------------------
 #CONSTANTS
 #--------------------------------------------------------------------
 LOG_LEVEL = 2
-#Methods
-CURRENTMETHOD = 'CurrentMethod'
-PARAMETERS = 'Params'
-MONOPOSECALIB = 'MonoPoseCalib'
-#--------------------------------------------------------------------
-#METHODS
-#--------------------------------------------------------------------
+
 
 class TordivelServer:
     '''
@@ -126,8 +117,10 @@ class TordivelServer:
 
 class ServerJSON(TordivelServer):
     '''
-    JSONRPC protocol
-    I use JSONRPC to avoid re-implemented my own format, feel free to modify itig necessary
+    JSONRPC protocol server
+    we use JSONRPC V2 to avoid re-implemented my own format,
+    but we re-implement in order not to rely on third party
+    libraries that may not be installed on scorpion
     '''
     def __init__(self, port,**kwargs):
         TordivelServer.__init__(self, port,**kwargs)
