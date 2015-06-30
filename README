@@ -1,0 +1,14 @@
+communicate with Scorpion using json-rpc protocol
+It is suppose to be generic, no project specific code
+
+Example:
+scrp = scorpion.Scorpion(ip, cfg.vision_port)
+try:
+    scrp.trigger() # helper method, take a picture in most profiles
+    v.set_value("robot_calib.robot_poses.pose1_x", 9.9)
+    scrp.set_value('RobotCalibration.method.Value', 'init')
+    scrp.run_tool('RobotCalibration')
+        scrp.run_tool("find_jig", results=["find_jig.x", "find_jig.y", "find_jig.c"]) #run a tool and read following values when tool is finished
+except:
+    scrp.disconnect()
+
