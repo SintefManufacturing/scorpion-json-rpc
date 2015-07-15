@@ -137,7 +137,7 @@ class ServerJSON(TordivelServer):
         start = time()
         # try:
         msg = Encoding.ASCII.GetString(args.message, 0, args.message.Length)
-        # print "recv: " + str(args.senderAddress) + ":" + str(args.senderPort) + " " + msg + " " + str(time())
+        #print "recv: " + str(args.senderAddress) + ":" + str(args.senderPort) + " " + msg + " " + str(time())
         msg = json.loads(msg)
         method = msg['method']
         rpcid = msg['id']
