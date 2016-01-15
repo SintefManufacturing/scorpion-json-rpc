@@ -2,6 +2,15 @@ Communicate with, and control Scorpion Vision from python using json-rpc protoco
 
 This is generic and does not contain project specific code
 
+
+Installation:
+
+clone this repository or copy tordivel_client.py and tordivel_server.py to scorpion profile MYPROFILE/Python/
+cp content of central_start.py into "Central Start" script of Scorpion.
+
+on client side have scorpion.py in a place when you python script will find it
+
+
 Example:
 
     scrp = scorpion.Scorpion(ip, cfg.vision_port)
