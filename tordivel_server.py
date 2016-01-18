@@ -101,6 +101,8 @@ class TordivelServer:
 
     def RemoteConnectHandler(self, sender, args):
         print str(args.remoteAddress) + ":" + str(args.remotePort) + " Connected " + str(time())
+        if __main__.client is not None:
+            print("OVerwritting current client value, this might be an Error! we only support one client!!!!!!")
         __main__.client = client.Client(sender, args)
         __main__.SetIntValue(':RobotID.Value', 0)
         cameras = __main__.GetCameras()
