@@ -1,4 +1,4 @@
-Communicate with, and control Scorpion Vision from python using json-rpc protocol
+Communicate with, and control Scorpion Vision from python using json-rpc protocol. Licenced under GPL
 
 This is generic and does not contain project specific code
 
